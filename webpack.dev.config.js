@@ -20,8 +20,7 @@ module.exports = {
         use: {
           loader: "babel-loader"
         }
-      },
-      {
+      },{
         test: /\.s[ac]ss$/i,
         use: [
           // Creates `style` nodes from JS strings
@@ -31,13 +30,12 @@ module.exports = {
           // Compiles Sass to CSS
           'sass-loader',
         ],
-      },  
-      {
-         test: /\.(png|svg|jpg|gif)$/,
-         use: [
-           'file-loader',
-         ],
-       },          
+      },{
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
+        ],
+      }
     ]
   },
 

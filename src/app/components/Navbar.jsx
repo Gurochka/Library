@@ -1,19 +1,19 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ReactComponent as Logo } from "/public/images/books.svg";
+import Logo from "./Logo.jsx";
 
 export default class Navbar extends React.Component {
   render(){
     return  (
-<nav className="navbar">
-  <div className="container">
+<nav className="navbar white">
+  <div className="container flex align-items-center">
     
-    <a className="navbar-brand" href="#"><Logo/><strong>Librarian</strong></a>
+    <a className="navbar-brand flex align-items-center" href="#"><Logo /><strong>libraria</strong></a>
     
-    <div className="collapse navbar-collapse">
+    <div className="collapse navbar-collapse align-items-center justify-content-between flex-grow-1">
       <ul className="navbar-nav">
         <li className="nav-item">
-          <a className="nav-link" href="#">Dashboard</a>
+          <a className="nav-link" href="#">Dashboard  <FontAwesomeIcon icon="angle-down"/></a>
           
           <div className="dropdown-menu">
             <a href="#">Latest Performance</a>
@@ -26,19 +26,23 @@ export default class Navbar extends React.Component {
 
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Market Overview</a>
+          <a className="nav-link" href="#">Market Overview  <FontAwesomeIcon icon="angle-down"/></a>
           <div className="dropdown-menu">
             <a href="#">Overall Status</a>
             <a href="#">Rising/Falling Trend</a>
           </div>         
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">Help</a>
+          <a className="nav-link" href="#">Help  <FontAwesomeIcon icon="angle-down"/></a>
           <div className="dropdown-menu">
             <a href="">Benefits For registered users</a>
             <a href="">How to use Pension Angel Tools</a>
           </div>          
         </li>
+      </ul>
+
+      <ul className="navbar-nav">
+        <button>Sign In</button>
       </ul>
     </div>
   </div>

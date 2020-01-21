@@ -1,15 +1,15 @@
 .navbar{
-  background-color: $default-color;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12);
   .navbar-brand{
-    color: $primary-color;
     text-decoration: none;
-  }
-  .container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
+    font-size: 1.8em;
+    font-weight: 300;
+    margin: 1rem 1rem 1rem 0;
+
+    svg{
+      fill: $primary-color;
+      width: 45px;
+      margin-right: 0.5em;  
+    }
   }
 
   .navbar-nav{
@@ -21,17 +21,17 @@
       margin-bottom: 0.1rem;
 
       .nav-link{
-        color: $primary-color;
+        color: $text-main;
         text-decoration: none;
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: -.5px;
-        line-height: 20px;
-        font-size: 12px;
         padding: 0.8rem 1rem;
         display: inline-flex;
         align-items: center;
-        width: 100%;
+        font-size: 0.9em;
+        // width: 100%;
+        svg{
+          opacity: 0.5;
+          margin-left: 0.4rem;
+        }
       }
       
       .dropdown-menu{
@@ -63,32 +63,23 @@
             background-color: $gray-200;
           }
           &.active{
-            background-color: $primary-color;
-            color: $text-light;
+            background-color: $tertiary-color;
+            color: $primary-color;
           }
         }
       }
 
-      &:nth-last-child(-n+2){
-        .dropdown-menu{
-          right: 0;
-          left: auto;         
-        }
-      }
-      &.active{
+      &.active, &:hover{
         .nav-link{
-          background-color: $primary-color;
-          color: $text-light;
+          background-color: $tertiary-color;
+          color: $primary-color;
+          border-radius: 50px;
         }
       }
       &:hover{
         .dropdown-menu{
           top: 100%;
           transform: translate3d(0,0,0);
-        }
-        .nav-link{
-          background-color: $primary-color;
-          color: $text-light;
         }
       }
     }
@@ -108,9 +99,20 @@
     flex-basis: 100%;
   }
 
+  &.transparent{
+
+  }
+  &.white{
+    background-color: $default-color;
+    box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.12);
+    .navbar-brand{
+      color: $text-headers;
+    }
+  }  
+
   @media (min-width: 768px){
     .collapse{
-      display: block;
+      display: flex;
       flex-basis: auto;
     }
     .navbar-toggler{
@@ -124,7 +126,7 @@
         margin-bottom: 0.1rem;
         .nav-link{
           padding: 0.5rem 1rem;
-          width: auto;
+          // width: auto; 
         }
         .dropdown-menu{
           position: absolute;
