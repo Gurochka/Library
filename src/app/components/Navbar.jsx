@@ -42,7 +42,7 @@ export default class Navbar extends React.Component {
       </ul>
 
       <ul className="navbar-nav">
-        <button>Sign In</button>
+        <button className="btn btn-secondary"> <FontAwesomeIcon icon="sign-out-alt"/> Sign In</button>
       </ul>
     </div>
   </div>

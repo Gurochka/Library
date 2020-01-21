@@ -1,0 +1,102 @@
+.btn {
+  display: inline-block;
+  color: $text-main;
+  background-color: $default-color;
+  cursor: pointer;
+  border: none;
+  border-radius: 50px;  
+  font-size: .9rem;
+  padding: .6rem 1.2rem;
+
+  &:hover{
+    background-color: darken($default-color, 5%);
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba($default-color, .5)
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+// Button colors
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color}{
+    color: $white;
+    background-color: $value;
+    &:hover{
+      background-color: darken($value, 10%);
+    }
+    &:focus, &.focus{
+      box-shadow: 0 0 0 0.2rem rgba($value, .5)
+    }
+  }
+}
+.btn-secondary{
+  color: $text-main;
+  background-color: $gray-200;
+}
+.btn-tertiary{
+  color: $primary-color;
+  &:hover{
+    background-color: $primary-color;
+    color: $white;
+  }
+}
+
+// Outline buttons
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color}-outline{
+    color: $value;
+    border: 2px solid $value;
+    &:hover{
+      color: $white;
+      background-color: $value;
+    }
+    &:focus, &.focus{
+      box-shadow: 0 0 0 0.2rem rgba($value, .5)
+    }
+  }
+}
+
+.btn-secondary-outline{
+  color: $text-main;
+  border-color: $text-main;
+  &:hover{
+    background-color: $text-main;
+  }
+}
+
+// Sizes 
+
+.btn-xl{
+  font-size: 1rem;
+  padding: .8rem 2rem;
+}
+.btn-lg{
+  padding: .5rem .875rem;
+  font-size: .875rem;
+  line-height: 1.3333;  
+}
+.btn-sm{
+  padding: .3rem .65rem;
+  font-size: .75rem;
+  line-height: 1.5;  
+}
+.btn-xs{
+  padding: .2rem .5rem;
+}
