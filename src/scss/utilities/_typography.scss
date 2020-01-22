@@ -30,11 +30,9 @@ html{
 // Headers
 
 h1, h2, h3, h4, h5, h6 {
-  letter-spacing: -.05em;
-  color: $text-main;
+  color: $text-headers;
   text-transform: none;
   -webkit-font-smoothing: antialiased;
-  font-family: 'Open Sans', sans-serif;
 }
 
 @mixin headerSize($size, $height, $margin-bottom, $weight){
@@ -45,22 +43,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1{
-  @include headerSize(2.2rem, 2.5rem, 2rem, 400);  
+  @include headerSize(2.2rem, 2.5rem, 2rem, 300);  
 }
 h2{
-  @include headerSize(1.9rem, 2.2rem, 2.2rem, 400);
+  @include headerSize(1.9rem, 2.2rem, 2.2rem, 300);
 }
 h3{
-  @include headerSize(1.7rem, 1.9rem, 1.9rem, 400);
+  @include headerSize(1.7rem, 1.9rem, 1.9rem, 300);
 }
 h4{
-  @include headerSize(1.4rem, 1.7rem, 1rem, 700);
+  @include headerSize(1.4rem, 1.7rem, 1rem, 400);
 }
 h5{
-  @include headerSize(1rem, 1.4rem, 1rem, 700);
+  @include headerSize(1rem, 1.4rem, 1rem, 400);
 }
 h6{
-  @include headerSize(1rem, 1.4rem, 1rem, 400);  
+  @include headerSize(1rem, 1.4rem, 1rem, 700);  
 }
 
 // Links 

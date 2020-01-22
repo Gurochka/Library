@@ -20,7 +20,7 @@ export default class Navbar extends React.Component {
                 <a className="nav-link" href="#">Books  <FontAwesomeIcon icon="angle-down"/></a>
                 <div className="dropdown-menu">
                   <NavLink activeClassName="active" to="/books_search">Books Search</NavLink>
-                  <a href="#">Managing Books</a>
+                  <NavLink activeClassName="active" to="/add_book">Add Book</NavLink>
                 </div>         
               </li>
               <li className="nav-item">

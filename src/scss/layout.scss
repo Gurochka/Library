@@ -6,11 +6,13 @@
 
 @import "components/navbar";
 @import "components/buttons";
+@import "components/form";
 
 @import "utilities/flex";
 @import "utilities/sizes";
 @import "utilities/container";
 @import "utilities/spacing";
+@import "utilities/typography";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -20,4 +22,10 @@ body{
   font-family: 'Raleway', sans-serif;
   font-weight: 400;
   color: $text-main;
+}
+
+hr{
+  border-top: 1px solid $gray-400;
+  border-bottom: none;
+  margin: 2rem 0;
 }
