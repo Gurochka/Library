@@ -69,12 +69,10 @@
         }
       }
 
-      &.active, &:hover{
-        .nav-link{
-          background-color: $tertiary-color;
-          color: $primary-color;
-          border-radius: 50px;
-        }
+      .nav-link.active, &:hover .nav-link{
+        background-color: $tertiary-color;
+        color: $primary-color;
+        border-radius: 50px;
       }
       &:hover{
         .dropdown-menu{
