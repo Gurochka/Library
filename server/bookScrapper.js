@@ -4,7 +4,7 @@ const fs = require('fs');
 const url = 'https://wordery.com/winnie-the-pooh-a-a-milne-9781405280839';
 
 let urlsByCategories = {
-  'Children\'s Books': [
+  1: [ // "Children's Books"
     'https://wordery.com/harry-potter-and-the-philosophers-stone-j-k-rowling-9781408855652',
     'https://wordery.com/the-beast-of-buckingham-palace-david-walliams-9780008262174',
     
@@ -18,7 +18,7 @@ let urlsByCategories = {
     'https://wordery.com/look-inside-our-world-emily-bone-9781409563945',
     'https://wordery.com/winnie-the-pooh-a-a-milne-9781405280839'
   ],
-  'Education': [
+  2: [ // "Education"
     'https://wordery.com/ks3-history-twentieth-century-world-robert-selth-9780008356033',
     'https://wordery.com/ks3-history-revision-guide-collins-ks3-9780007562886',
     'https://wordery.com/you-can-be-an-entomologist-national-geographic-kids-9781426333545',
@@ -26,7 +26,7 @@ let urlsByCategories = {
     'https://wordery.com/revolution-and-reaction-andrew-matthews-9780521567343',
     'https://wordery.com/medieval-realms-art-and-architecture-stewart-ross-9780750284677'
   ],
-  'Romance': [
+  3: [ // "Romance"
     'https://wordery.com/hearts-of-three-jack-london-9781795416467',
 
     'https://wordery.com/pride-and-prejudice-jane-austen-9781847493699',
@@ -35,7 +35,7 @@ let urlsByCategories = {
     'https://wordery.com/the-essex-serpent-sarah-perry-9781781255452',
     'https://wordery.com/the-great-alone-kristin-hannah-9781447286035'
   ],
-  'Science Fiction & Fantasy': [
+  4: [ // "Science Fiction & Fantasy"
     'https://wordery.com/the-last-wish-andrzej-sapkowski-9780575082441',
     'https://wordery.com/sword-of-destiny-andrzej-sapkowski-9781473211544',
     'https://wordery.com/season-of-storms-andrzej-sapkowski-9781473218086',
@@ -49,7 +49,7 @@ let urlsByCategories = {
     'https://wordery.com/the-two-towers-j-r-r-tolkien-9780261103580',
     'https://wordery.com/the-return-of-the-king-j-r-r-tolkien-9780007203567'
   ],
-  'Mystery, Thriller & Suspense': [
+  5: [ // "Mystery, Thriller & Suspense"
     'https://wordery.com/the-sign-of-four-sir-arthur-conan-doyle-9780141395487',
     'https://wordery.com/the-hound-of-the-baskervilles-sir-arthur-conan-doyle-9780140437867',
     'https://wordery.com/a-study-in-scarlet-sir-arthur-conan-doyle-9780141395524',
@@ -111,13 +111,12 @@ let book = {
   }
 }
 
-let generateBookJSON = (html) => {
-  let bookJSON = {};
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
-  for (let field in book){
-    bookJSON[field] = book[field](html);
-  }
-  return bookJSON;
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
 }
 
 let writeToFile = (json) => {
@@ -125,37 +124,42 @@ let writeToFile = (json) => {
   fs.writeFileSync('server/books.json', data);
 }
 
-let totalJSON = { books: [] };
+function gettingHTML(url) {
+  console.log('getting HTML for ', url);
 
-let gettingHTML = (url, id, category) => {
-  console.log({
-    id: id,
-    category: category,
-    url: url
+  return rp(url).then(function (html) {
+    let bookJSON = {};
+    for (let field in book){
+      bookJSON[field] = book[field](html);
+    }
+    return bookJSON;
   })
 }
 
-function getRandomArbitrary(min, max) {
-  return Math.random() * (max - min) + min;
-}
+function scrap(){
 
-let scrap = () => {
-  let id = 0, ms = 0;
+  let books = [];
 
-  for (let category in urlsByCategories){
-    let urls = urlsByCategories[category];
-
-    urls.forEach((url) => {
-      let id_now = id;
-      let category_now = category;
-
-      setTimeout(() => { gettingHTML(url, id_now, category_now) }, ms);
-      id++;
-      ms += getRandomArbitrary(1000, 5000);
-    });
+  //making books array plain
+  for (let category_id in urlsByCategories){
+    urlsByCategories[category_id].forEach((url, idx) => {
+      books.push({
+        category_id,
+        url,
+        id: parseInt(category_id.toString() + idx.toString(), 10)
+      })
+    })
   }
+
+  (async function(){
+    for (let book of books){
+      let ms = getRandomArbitrary(1000, 5000);
+      let [res] = await Promise.all([gettingHTML(book.url), timeout(ms)]);
+      Object.assign(book, res);
+      delete book.url;
+    }
+    writeToFile(books);
+  })();
 }
 
 scrap();
-
-// setTimeout(myFunc, 1500);
