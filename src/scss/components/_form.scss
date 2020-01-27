@@ -41,6 +41,33 @@
     // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
     opacity: 1;
   }
+  &.form-control-xl{
+    font-size: 1em;
+    padding: 12px 20px;    
+  }
+}
+
+.library-checkbox{
+  svg {
+    margin-right: 0.4rem;
+    font-size: 1.3em;
+  }
+  &.checked{
+    svg {display: none;}
+    .fa-checked{display: inline-block; color: $primary-color;}
+  }
+  &.unchecked{
+    svg {display: none;}
+    .fa-unchecked{display: inline-block;}
+    transition: all 1s;
+    &:hover{
+      svg{display: none !important;}
+      .fa-hovered{display: inline-block !important;}
+    }
+  }
+  input{
+    display: none;
+  }
 }
 
 select.form-control {

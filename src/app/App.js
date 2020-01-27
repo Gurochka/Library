@@ -9,8 +9,9 @@ import Readers from './librarian/Readers.jsx';
 import BooksSearch from './librarian/BooksSearch.jsx';
 import AddBook from './librarian/AddBook.jsx';
 
-import { faAngleDown, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-library.add(faAngleDown, faSignOutAlt)
+import { faAngleDown, faSignOutAlt, faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
+library.add(faAngleDown, faSignOutAlt, faHeart, faSquare, faCheckSquare, fasCheckSquare)
 
 import Navbar from './components/Navbar.jsx'
 

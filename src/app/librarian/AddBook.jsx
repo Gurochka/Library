@@ -50,7 +50,7 @@ export default class AddBook extends React.Component {
             <select className="form-control" name="category" required placeholder="Category">
               {categories.map(item => (
                 <option key={item.id} value={item.id}>{item.title}</option>
-                ))}
+                ))
               }
             </select>
             <input type="text" className="form-control" name="publishers" required placeholder="Publisher(s)"/>

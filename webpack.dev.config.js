@@ -10,6 +10,12 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   devtool: 'inline-source-map',
+  
+  resolve: {
+    alias: {
+      App: path.resolve(__dirname + '/src/app')
+    }
+  },
 
   module: {
     rules: [
