@@ -4,9 +4,10 @@
 @import "variables";
 @import "mixins";
 
-@import "components/navbar";
 @import "components/buttons";
 @import "components/form";
+@import "components/navbar";
+@import "components/pagination";
 
 @import "utilities/flex";
 @import "utilities/sizes";
@@ -30,4 +31,9 @@ hr{
   border-top: 1px solid $gray-400;
   border-bottom: none;
   margin: 2rem 0;
+}
+
+.list-ustyled{
+  padding: 0;
+  list-style: none;
 }

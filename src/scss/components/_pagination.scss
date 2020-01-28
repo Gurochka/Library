@@ -1,0 +1,10 @@
+.pagination{
+  margin: 1rem;
+  li.dots{
+    color: $gray-500;
+  }
+  li.active{
+    background-color: $primary-color;
+    color: $text-light;    
+  }
+}

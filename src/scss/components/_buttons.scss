@@ -100,3 +100,27 @@ fieldset:disabled a.btn {
 .btn-xs{
   padding: .2rem .5rem;
 }
+
+// Round button
+
+.round-button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  margin: 0 0.5rem;
+  border-radius: 50%;
+  
+  height: 40px;
+  width: 40px;
+  
+  background-color: $gray-200;
+  color: $gray-500;
+  transition: all 0.5s ease;
+  
+  &:hover{
+      background-color: $primary-color;
+      color: $text-light;
+      cursor: pointer;
+  }  
+}
