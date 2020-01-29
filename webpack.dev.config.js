@@ -54,7 +54,7 @@ module.exports = {
 
   devServer: {
     port: 9000,
-    open: false,
+    open: true,
     historyApiFallback: true
     // openPage: ''
   }

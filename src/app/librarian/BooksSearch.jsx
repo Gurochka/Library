@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Checkbox from 'App/components/Checkbox.jsx';
+import Pagination from 'App/components/Pagination.jsx';
+import BookBriefDefinition from 'App/components/BookBriefDefinition.jsx'
 
 export default class BooksSearch extends React.Component {
   constructor(props){
@@ -8,18 +10,16 @@ export default class BooksSearch extends React.Component {
     this.state = {
       books: [],
       categories: [],
-
-      booksPage: 1,
-      perPage: 10,
-      booksAreOver: false,
-
-      search: '',
       checkedCategories: []
     }
+
     this.fetchBooks = this.fetchBooks.bind(this)
-    this.showMore = this.showMore.bind(this)
     this.onSearchHandler = this.onSearchHandler.bind(this)
+    this.paginate = this.paginate.bind(this)
   }
+
+  booksPage = 1
+  totalPages = 0
 
   componentDidMount() {
     this.fetchBooks()
@@ -33,39 +33,41 @@ export default class BooksSearch extends React.Component {
   }
 
   fetchBooks(){
-    let requests = `_page=${this.state.booksPage}&_limit=${this.state.perPage}`
-    if (this.state.search) requests += `&q=${this.state.search}`
+    let requests = `_page=${this.booksPage}&_limit=10`;
+
+    if (this.search) requests += `&q=${this.search}`
     if (this.state.checkedCategories.length) {
       requests += '&' + this.state.checkedCategories.map(cat => `category_id=${cat}`).join('&');
     }
 
     fetch(`http://localhost:3000/books?${requests}`)
-    .then(res => { return res.json()})
     .then(res => {
-      let books = this.state.booksPage == 1 ? res : this.state.books.concat(res)
-      this.setState({ books: books })
-      if (res.length < this.state.perPage) this.setState({booksAreOver: true})
+      let headers = res.headers.get('Link');
+      if (headers) headers = parseInt(headers.match(/_page=(\d)+/g).pop().replace('_page=', ''), 10);
+      this.totalPages = headers || 0;
+      return res.json()
+    })
+    .then((res, req) => {
+      this.setState({ books: res })
     })
   }
 
-  showMore(){
-    this.setState({ booksPage: (this.state.booksPage + 1) }, () => {
-      this.fetchBooks()
-    })
+  paginate(pageNumber){
+    this.booksPage = pageNumber;
+    this.fetchBooks()
   }
 
   onSearchHandler(event){
-    this.setState({ 
-      search: event.target.value,
-      booksPage: 1
-    }, () => { this.fetchBooks()})
+    this.search = event.target.value
+    this.booksPage = 1;
+    this.fetchBooks();
   }
 
   onCategoriesClick(category){
     category.checked = !category.checked;
     
     let checked = this.state.categories.filter(cat => cat.checked).map(cat => cat.id);
-
+    this.booksPage = 1;
     this.setState({checkedCategories: checked.length == this.state.categories.length ? [] : checked}, () => {
       this.fetchBooks()
     })
@@ -78,36 +80,20 @@ export default class BooksSearch extends React.Component {
         <h1>Books Search</h1>
 
         <div className="flex">
+          
           <div className="flex-grow-1">
-
-            <div className = "books mb-5 mr-5">
+            <div className="books mb-5 mr-5">
 
               <input type="text" className="form-control form-control-xl" placeholder="Search book by author or title" onChange={this.onSearchHandler}/>
 
-              {books.map(book => (
-                <div className="book-container flex mb-3" key={book.id}>
-                  <div className="book-cover"><img className="w-100 h-100" src={book.images} /></div>
-                  <div className="book-info flex justify-content-between align-items-center ml-4">
-                    <div>
-                      <h4>{book.title}</h4>
-                      <span className="text-muted">{book.author}</span>                      
-                    </div>
-                    <div className="bookmark mr-3 round-button"><FontAwesomeIcon icon={['far', 'heart']}/></div>
-                  </div>
-                </div>  
-              ))}
-              {
-                !this.state.booksAreOver && 
-                <div className="flex justify-content-center">
-                  <button className="btn btn-primary btn-xl" onClick={this.showMore}>Show more</button>
-                </div>
-              }
+              <Pagination page={ this.booksPage } total={this.totalPages} onChange={this.paginate}/>
 
+              { books.map(book => <BookBriefDefinition book={book} key={book.id}/>)}
             </div>
           </div>
+
           <div className="filters">
-            <h2>Filters</h2>
-            
+            <h2>Filters</h2>            
             <div>
 {/*              <div><input type="checkbox" /> <label> Include Occuped </label> </div>
               <div><input type="checkbox" /> <label> Include those I've read </label> </div>*/}
