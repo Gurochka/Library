@@ -68,6 +68,7 @@ a{
   text-decoration: none;
   &:hover{
     text-decoration: underline;
+    cursor: pointer;
   }
 }
 
@@ -102,3 +103,5 @@ a{
 // Text transformations
 .text-uppercase { text-transform: uppercase; }
 .text-lowercase { text-transform: lowercase; }
+
+.text-pre-wrap{ white-space: pre-wrap; }
