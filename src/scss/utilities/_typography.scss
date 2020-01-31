@@ -113,3 +113,22 @@ a{
     font-weight: $prop;
   }
 }
+
+// Tags 
+
+.tag{
+  background-color: rgba(white, 0.35);
+  color: white;
+  padding: 1rem;
+  border-radius: 2rem;
+  transition: background-color 0.3s ease-out;
+
+  &.tag-hover:hover{
+      background-color: rgba(white, 0.5);
+      text-decoration: none;
+  }
+
+  &.tag-primary{
+    background-color: $primary-color;
+  }
+}
