@@ -1,0 +1,28 @@
+.landing-page{
+  .landing-hero{
+    background: linear-gradient(to bottom, rgba($gray-900, 0.4), rgba($gray-800, 0.3)), url(/public/images/heros/novel-books-775998.jpg) center/cover no-repeat;
+    height: 700px;
+    color: $text-light;
+    font-size: 1.2em;
+    font-weight: 500;
+    h1{ 
+        font-size: 3em;
+        font-weight: 500;
+    }
+    h2{
+        color: $gray-400;
+    }
+    a{
+        background-color: rgba(white, 0.35);
+        color: white;
+        padding: 1rem;
+        border-radius: 2rem;
+        margin-left: 1rem;
+        transition: all 0.3s ease-out; 
+        &:hover{
+            background-color: rgba(white, 0.5);
+            text-decoration: none;
+        }
+    }
+  }
+}

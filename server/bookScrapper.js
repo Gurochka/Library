@@ -88,7 +88,20 @@ let urlsByCategories = {
     'https://wordery.com/in-the-time-we-lost-carrie-hope-fletcher-9780751571264',
     'https://wordery.com/uprooted-naomi-novik-9781447294146',
     'https://wordery.com/shadow-of-the-fox-julie-kagawa-9781848457393',
-    'https://wordery.com/to-kill-a-kingdom-alexandra-christo-9781471407390'
+    'https://wordery.com/to-kill-a-kingdom-alexandra-christo-9781471407390',
+    'https://wordery.com/equal-rites-terry-pratchett-9780552166614?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MTo2OjVlMzJhNzU2NmYzMjE2LjkyODk0MzQxOjljMzRmMmNh',
+    'https://wordery.com/the-colour-of-magic-terry-pratchett-9780552166591?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MTo3OjVlMzJhNzU2NmYzMjE2LjkyODk0MzQxOjFkMTE5N2Vk',
+    'https://wordery.com/snuff-terry-pratchett-9780857526496?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MTo0OjVlMzJhNzU2NmYzMjE2LjkyODk0MzQxOjQ1MGYzZWM1',
+    'https://wordery.com/the-truth-terry-pratchett-9780857524171?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MToxODo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MToxNDA5NzE0Yg%3D%3D',
+    'https://wordery.com/small-gods-terry-pratchett-9780552167512?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MToyMDo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTpmM2U5ZmJhNg%3D%3D',
+    'https://wordery.com/the-carpet-people-terry-pratchett-9780552573368?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MToxOTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo5NTJjMTQ2Yw%3D%3D',
+    'https://wordery.com/death-and-friends-a-discworld-journal-terry-pratchett-9781473224292?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MToxNDo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTphZjAyZDNhYQ%3D%3D',
+    'https://wordery.com/thief-of-time-terry-pratchett-9780857525031?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MjoyMTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo4MDliNzM3OQ==',
+    'https://wordery.com/witches-abroad-terry-pratchett-9780552167505?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MjoyMTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo4MDliNzM3OQ==',
+    'https://wordery.com/maskerade-terry-pratchett-9781473200289?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MjoyMTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo4MDliNzM3OQ==',
+    'https://wordery.com/eric-terry-pratchett-9781473200173?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MjoyMTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo4MDliNzM3OQ==',
+    'https://wordery.com/nanny-oggs-cookbook-terry-pratchett-9780552146739?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MjoyMTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo4MDliNzM3OQ==',
+    'https://wordery.com/unseen-academicals-terry-pratchett-9780857525932?cTrk=MTY4ODQ1ODE0fDVlMzJjYzljYmM0MDg6MjoyMTo1ZTMyYTc1NjZmMzIxNi45Mjg5NDM0MTo4MDliNzM3OQ=='
   ],
   5: [ // "Mystery, Thriller & Suspense"
     'https://wordery.com/the-sign-of-four-sir-arthur-conan-doyle-9780141395487',

@@ -105,3 +105,11 @@ a{
 .text-lowercase { text-transform: lowercase; }
 
 .text-pre-wrap{ white-space: pre-wrap; }
+
+// Font weights
+
+@each $prop in $width {
+  .text-w-#{$prop}{
+    font-weight: $prop;
+  }
+}
