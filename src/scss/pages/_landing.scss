@@ -18,7 +18,7 @@
     position: relative;
     font-size: 2em;
     font-weight: 400;
-    margin: 5rem 0;
+    margin: 5rem 0 2rem 0;
 
     &::after{
         content: "";
@@ -32,35 +32,89 @@
         background-color: $primary-color;
     }
   }
+  .landing-sub-header{
+    color: $text-muted;
+    font-size: 1.7em;
+    font-weight: 300;
+  }
 
-  .landing-activities{
+
+  .landing-image-block{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 3rem;
     & > div {
-        background: $gray-800 center/cover no-repeat;
-        width: 30%;
-        height: 400px;
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        justify-content: space-between; 
-    }
-    .tag{
-        font-size: 0.8em;
-        letter-spacing: 1px;
-        padding: 0.2rem 1rem;
-    }
-    .tag-primary{
-        text-transform: uppercase;
-        margin: 1rem 0 0 1rem;
-    }
-    .landing-activities-text{
+        justify-content: space-between;
+
+        background: $gray-800 center/cover no-repeat;
+        box-shadow: 0 0 7px 0 rgba($black, .12);
+        border-radius: 4px;
         color: $text-light;
-        padding: 2rem 1.5rem 0 1.5rem;
-        background: linear-gradient(0deg, rgba($black, 0.7), 70%, transparent);
+        height: 400px;
+        margin-bottom: 2rem;
+
+        transform: translate3d(0,0,0);
+        transition: transform 0.3s;
+        &:hover{
+            transform: translate3d(0,-6px,0);
+            cursor: pointer;
+        }
+        h3, h4, h5, h6{
+          color: $text-light;
+          font-weight: 500;
+        }
+        .bottom-text{
+            padding: 2rem 1.5rem 0 1.5rem;
+            border-radius: 4px;
+            background: linear-gradient(0deg, rgba($black, 0.7), 70%, transparent);
+        }
     }
-    h4{
-        color: $text-light;
-        font-weight: 500;
-        margin-top: 1rem;
+  }
+
+  .landing-activities{
+    .landing-image-block{
+        & > div {
+            align-items: flex-start;
+        }
+        .tag{
+            font-size: 0.8em;
+            letter-spacing: 1px;
+            padding: 0.2rem 1rem;
+        }
+        .tag-primary{
+            text-transform: uppercase;
+            margin: 1rem 0 0 1rem;
+        }
+        h4{
+            margin-top: 1rem;
+        }
+        @media (min-width: 992px){
+            justify-content: space-between;
+            & > div {
+                width: 30%;
+                margin-bottom: 0;
+            }            
+        }
     }
+  }
+
+  .landing-new-arrivals{
+    .landing-image-block {
+        & > div {
+            width: calc((100% - 2rem)/2);
+            text-align: center;
+            h5{ 
+                text-align: center;
+                font-size: 1.2em;
+            }
+            @media (min-width: 992px){
+                width: calc((100% - 3rem)/4);
+            }
+        }
+    }
+  
   }
 }
