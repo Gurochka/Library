@@ -1,10 +1,10 @@
 {
   "categories": [
-    {"id": 1, "title": "Children's Books"},
-    {"id": 2, "title": "Education"},
-    {"id": 3, "title": "Romance"},
-    {"id": 4, "title": "Science Fiction & Fantasy"},
-    {"id": 5, "title": "Mystery, Thriller & Suspense"}
+    {"id": 1, "title": "Children's Books", "icon":"baby-carriage"},
+    {"id": 2, "title": "Education", "icon": "graduation-cap"},
+    {"id": 3, "title": "Romance", "icon": "glass-cheers"},
+    {"id": 4, "title": "Science Fiction & Fantasy", "icon": "dragon"},
+    {"id": 5, "title": "Mystery, Thriller & Suspense", "icon": "user-secret"}
   ],
   "books": [
   {

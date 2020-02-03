@@ -116,11 +116,5 @@ fieldset:disabled a.btn {
   
   background-color: $gray-200;
   color: $gray-500;
-  transition: all 0.5s ease;
-  
-  &:hover{
-      background-color: $primary-color;
-      color: $text-light;
-      cursor: pointer;
-  }  
+  @include change-colors-on-hover()
 }

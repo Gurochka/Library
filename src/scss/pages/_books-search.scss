@@ -2,8 +2,7 @@
 
   .book-container{
     background-color: $gray-100;
-    transition: transform 0.3s;
-    
+
     .book-cover{
       max-height: 250px;
       flex: 1;
@@ -29,10 +28,7 @@
         width: auto;  
       }
     }
-    &:hover{
-      text-decoration: none;
-      transform: translateX(0.5rem);
-    }
+    @include translate-on-hover(right);
   }
 
   .filters{

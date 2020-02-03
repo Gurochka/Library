@@ -17,3 +17,27 @@
   padding: 0;
   list-style: none;
 }
+
+@mixin translate-on-hover($direction: up){
+  transform: translate3d(0,0,0);
+  transition: transform 0.3s;
+  &:hover{
+    text-decoration: none;
+    @if $direction == up{
+      transform: translate3d(0,-6px,0);
+    }
+    @if $direction == right{
+      transform: translateX(0.5rem);
+    } 
+    cursor: pointer;
+  }
+}
+
+@mixin change-colors-on-hover($color: $primary-color){
+  transition: color 0.3s, background-color 0.3s;
+  &:hover{
+    background-color: $color;
+    color: white;
+    cursor: pointer;
+  }
+}

@@ -12,7 +12,10 @@ import Book from './librarian/Book.jsx';
 
 import { faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
-library.add(faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faHeart, faSquare, faCheckSquare, fasCheckSquare)
+library.add(faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faHeart, faSquare, faCheckSquare, fasCheckSquare);
+// icons for categories
+import { faBabyCarriage, faGraduationCap, faGlassCheers, faDragon, faUserSecret } from '@fortawesome/free-solid-svg-icons';
+library.add(faBabyCarriage, faGraduationCap, faGlassCheers, faDragon, faUserSecret);
 
 import Navbar from './components/Navbar.jsx'
 
