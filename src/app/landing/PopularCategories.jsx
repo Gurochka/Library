@@ -19,7 +19,7 @@ export default class PopularCategories extends React.Component {
     return (
       <div className="container landing-popular-categories">
         <h3 className="landing-header text-center">Popular Categories</h3>
-        <div className="categories flex justify-content-between">
+        <div className="categories">
           {this.state.categories.map(category => (
             <div key={category.id} className="flex align-items-center justify-content-center flex-column">
               <FontAwesomeIcon className="fa-checked" icon={category.icon}/>
