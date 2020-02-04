@@ -1,22 +1,19 @@
 .landing-page{
+
   .landing-hero{
     background: linear-gradient(to bottom, rgba($gray-900, 0.4), rgba($gray-800, 0.3)), url(/public/images/heros/novel-books-775998.jpg) center/cover no-repeat;
-    height: 700px;
-    color: $text-light;
-    font-size: 1.2em;
-    font-weight: 500;
-    h1{ 
-        font-size: 3em;
-        font-weight: 500;
-    }
-    h2{
-        color: $gray-400;
+    height: 400px;
+    font-size: 0.9em;
+
+    @media (min-width: 992px){
+        font-size: 1.2em;
+        height: 700px;
+        h1{ font-size: 2.5em; }
     }
   }
 
   .landing-header{
     position: relative;
-    font-size: 2em;
     font-weight: 400;
     margin: 5rem 0 2rem 0;
 
@@ -32,9 +29,9 @@
         background-color: $primary-color;
     }
   }
+  
   .landing-sub-header{
     color: $text-muted;
-    font-size: 1.7em;
     font-weight: 300;
   }
 
@@ -95,15 +92,31 @@
 
   .landing-new-arrivals{
     .landing-image-block {
+        justify-content: space-around;
         & > div {
-            width: calc((100% - 2rem)/2);
+            width: calc((100% - 6rem)/2);
+            height: 220px;
+
             text-align: center;
             h5{ 
                 text-align: center;
                 font-size: 1.2em;
             }
+            @media (min-width: 576px){
+                width: calc((100% - 10rem)/2);
+                height: 300px;
+            }
+            @media (min-width: 768px){
+                width: calc((100% - 10rem)/4);
+                height: 250px;
+            }            
             @media (min-width: 992px){
-                width: calc((100% - 3rem)/4);
+                width: calc((100% - 10rem)/4);
+                height: 300px;
+            }
+            @media (min-width: 1160px){
+                width: calc((100% - 15rem)/4);
+                height: 350px;
             }
         }
     }
@@ -114,7 +127,6 @@
         @include flex-container($direction: column, $justify: space-between);
         & > div{
             @include flex-container($align-items: center, $justify: center);
-
             margin: 1rem;
             height: auto;
             padding: 2rem 0;

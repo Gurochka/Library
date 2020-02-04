@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Activities(){
   return (
     <div className="container landing-activities">
-      <h3 className="landing-header text-center">Our Exhibitions and Activities</h3>
+      <h2 className="landing-header text-center">Our Exhibitions and Activities</h2>
 
       <div className="landing-image-block">
         

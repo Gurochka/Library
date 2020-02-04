@@ -11,14 +11,13 @@ export default class NewArrivals extends React.Component {
     .then(res => res.json())
     .then((res, req) => {
       this.setState({ books: res })
-      console.log('books: ', res)
     })
   }
 
   render(props){
     return (
       <div className="container landing-new-arrivals">
-        <h3 className="landing-header text-center">New Arrivals</h3>
+        <h2 className="landing-header text-center">New Arrivals</h2>
         <h4 className="landing-sub-header text-center">Check out our new books</h4>
         <div className="landing-image-block">
           { this.state.books.map(book => (
