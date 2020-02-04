@@ -40,14 +40,10 @@
 
 
   .landing-image-block{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    @include flex-container($justify: space-between, $flow: row wrap);
     margin-top: 3rem;
     & > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include flex-container($direction: column, $justify: space-between);
 
         background: $gray-800 center/cover no-repeat;
         box-shadow: 0 0 7px 0 rgba($black, .12);
@@ -115,14 +111,9 @@
 
   .landing-popular-categories{
     .categories{
-        display: flex;
-        justify-content: space-between;
-        flex-direction: column;
+        @include flex-container($direction: column, $justify: space-between);
         & > div{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
+            @include flex-container($align-items: center, $justify: center);
 
             margin: 1rem;
             height: auto;

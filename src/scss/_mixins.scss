@@ -41,3 +41,13 @@
     cursor: pointer;
   }
 }
+
+@mixin flex-container($direction: row, $justify: null, $align-items: null, $align-self: null, $flow: null){
+  display: flex;
+  flex-direction: $direction;
+
+  @if $flow { flex-flow: $flow; }
+  @if $justify { justify-content: $justify; }
+  @if $align-items { align-items: $align-items; } 
+  @if $align-self { align-self: $align-self; }
+}

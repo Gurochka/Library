@@ -18,11 +18,8 @@ footer, .footer{
   }
 
   .footer-copyrights{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
+    @include flex-container($direction: column, $justify: center, $align-items: center);
+    
     border-top: 1px solid $gray-200;
     padding: 1rem 0;
 
@@ -32,8 +29,7 @@ footer, .footer{
       margin-left: 1rem;
     }
     .brands{
-      display: flex;
-      align-items: center; 
+      @include flex-container($align-items: center);
     }
   }
 
@@ -45,8 +41,7 @@ footer, .footer{
 
   @media (min-width: 992px){
     .footer-links{
-      display: flex;
-      justify-content: space-between;
+      @include flex-container($justify: space-between);
       text-align: left;
 
       h2{

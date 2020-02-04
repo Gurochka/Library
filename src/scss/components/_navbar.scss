@@ -34,8 +34,7 @@
       }
       
       .dropdown-menu{
-        display: flex;
-        flex-direction: column;
+        @include flex-container($direction: column);
         box-shadow: 0 6px 25px rgba(0,0,0,.2);
         background-color: $default-color;
         display: none;
