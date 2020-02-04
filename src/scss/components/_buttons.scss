@@ -104,7 +104,7 @@ fieldset:disabled a.btn {
 // Round button
 
 .round-button{
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   
@@ -116,5 +116,8 @@ fieldset:disabled a.btn {
   
   background-color: $gray-200;
   color: $gray-500;
-  @include change-colors-on-hover()
+  @include change-colors-on-hover();
+  font-size: 1.2em;
+  border: none;
+
 }

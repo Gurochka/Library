@@ -13,11 +13,17 @@ import Book from './librarian/Book.jsx';
 import { faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 library.add(faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faHeart, faSquare, faCheckSquare, fasCheckSquare);
+
 // icons for categories
 import { faBabyCarriage, faGraduationCap, faGlassCheers, faDragon, faUserSecret } from '@fortawesome/free-solid-svg-icons';
 library.add(faBabyCarriage, faGraduationCap, faGlassCheers, faDragon, faUserSecret);
 
+//all brand icons used in the project
+import { faReact, faSass, faNpm, faFacebookF, faGithubAlt, faInstagram } from '@fortawesome/free-brands-svg-icons';
+library.add(faReact, faSass, faNpm, faFacebookF, faGithubAlt, faInstagram);
+
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 
 
 function App() {
@@ -31,6 +37,7 @@ function App() {
         <Route path="/add_book" component = { AddBook } />
         <Route path="/book/:book_id" component = { Book } />
       </Switch>
+      <Footer />
     </Router>
   );
 }

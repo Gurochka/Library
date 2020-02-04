@@ -1,0 +1,66 @@
+footer, .footer{
+  background-color: $default-color;
+  border-top: 1px solid $gray-200;
+  margin-top: 2rem;
+
+  .footer-links{
+    padding: 2rem 1rem;
+    text-align: center;
+    h2{
+      justify-content: center;
+    }
+    .facebook-btn:hover{
+      background-color: #4267b2;
+    }
+    .github-btn:hover{
+      background-color: #24292e;
+    }    
+  }
+
+  .footer-copyrights{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-top: 1px solid $gray-200;
+    padding: 1rem 0;
+
+    svg.svg-inline--fa{
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-left: 1rem;
+    }
+    .brands{
+      display: flex;
+      align-items: center; 
+    }
+  }
+
+  .logo{
+    fill: $primary-color;
+    width: 40px;
+    margin-right: 0.5em;
+  }
+
+  @media (min-width: 992px){
+    .footer-links{
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+
+      h2{
+        justify-content: flex-start;
+      }
+      & > div{
+        width: 30%;
+      }
+    }
+    .footer-copyrights{
+      flex-direction: row;
+      .brands{
+        margin: 0 1rem;
+      }
+    }
+  }  
+}

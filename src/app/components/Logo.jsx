@@ -2,8 +2,8 @@ import React from 'react';
 
 const Logo = () => {
   return(
-<svg version="1.1" id="Capa_1"  x="0px" y="0px"
-   viewBox="0 0 512 512" styles={{enableBackground: 'new 0 0 512 512'}} >
+<svg version="1.1" id="Capa_1"  x="0px" y="0px" className="logo"
+   viewBox="0 0 512 512" style={{enableBackground: 'new 0 0 512 512'}} >
 <g>
   <g>
     <path d="M488.559,380.738h-4.011c2.347-4.227,3.688-9.085,3.688-14.253V157.182c0-16.244-13.216-29.461-29.462-29.461h-72.673
