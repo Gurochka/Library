@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Events(){
   return (
-    <div className="container landing-events">
+    <div className="container landing-events pt-4">
       <h2 className="landing-header text-center">Upcoming Events</h2>
       <h4 className="landing-sub-header text-center">Events Calendar for library programs</h4>
 

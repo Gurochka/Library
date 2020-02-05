@@ -17,7 +17,7 @@ export default class PopularCategories extends React.Component {
 
   render(props){
     return (
-      <div className="container landing-popular-categories">
+      <div className="container landing-popular-categories pt-4">
         <h2 className="landing-header text-center">Popular Categories</h2>
         <div className="categories">
           {this.state.categories.map(category => (

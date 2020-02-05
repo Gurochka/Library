@@ -16,19 +16,21 @@ export default class NewArrivals extends React.Component {
 
   render(props){
     return (
-      <div className="container landing-new-arrivals">
-        <h2 className="landing-header text-center">New Arrivals</h2>
-        <h4 className="landing-sub-header text-center">Check out our new books</h4>
-        <div className="landing-image-block">
-          { this.state.books.map(book => (
-            <div style={{ backgroundImage: `url(${book.images})`}} key={book.id}>
-              <span></span>
-              <div className="bottom-text">
-                <h5>{book.title}</h5>
-                <p>{book.author}</p>
-              </div>  
-            </div>
-            ))}
+      <div className="bg-secondary pt-2 pb-5">
+        <div className="container landing-new-arrivals">
+          <h2 className="landing-header text-center">New Arrivals</h2>
+          <h4 className="landing-sub-header text-center">Check out our new books</h4>
+          <div className="landing-image-block">
+            { this.state.books.map(book => (
+              <div style={{ backgroundImage: `url(${book.images})`}} key={book.id}>
+                <span></span>
+                <div className="bottom-text">
+                  <h5>{book.title}</h5>
+                  <p>{book.author}</p>
+                </div>  
+              </div>
+              ))}
+          </div>
         </div>
       </div>
     )
