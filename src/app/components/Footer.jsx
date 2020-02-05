@@ -26,7 +26,7 @@ export default class Footer extends React.Component {
           </div>
           <div>
             <h4>Сopyrights</h4>
-            <p>Here I will list all сopyrights to authors</p>
+            <p>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
           </div>
         </div>
 
@@ -36,7 +36,7 @@ export default class Footer extends React.Component {
             <FontAwesomeIcon icon={['fab', 'react']} title="React"/> 
             <FontAwesomeIcon icon={['fab', 'sass']} title="Sass" />
             <FontAwesomeIcon icon={['fab', 'npm']} title="npm" />
-          </div>       
+          </div>
         </div>
 
       </footer>
