@@ -30,13 +30,15 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route exact path="/" component = { Landing } />
-        <Route path="/readers" component = { Readers } />
-        <Route path="/books_search" component = { BooksSearch } />
-        <Route path="/add_book" component = { AddBook } />
-        <Route path="/book/:book_id" component = { Book } />
-      </Switch>
+      <div className="flex-grow-1">
+        <Switch>
+          <Route exact path="/" component = { Landing } />
+          <Route path="/readers" component = { Readers } />
+          <Route path="/books_search" component = { BooksSearch } />
+          <Route path="/add_book" component = { AddBook } />
+          <Route path="/book/:book_id" component = { Book } />
+        </Switch>
+      </div>
       <Footer />
     </Router>
   );
