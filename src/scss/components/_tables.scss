@@ -1,0 +1,32 @@
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+  margin-bottom: 2rem;
+  td, th{
+    padding:1rem 1.5rem;
+    text-align: left;
+  }
+  thead{
+    background-color: $tertiary-color;
+    tr{
+      border-bottom: 1px solid rgba($primary-color, 0.3);
+    }
+  }
+  tbody{
+    tr{
+      border-bottom: 1px solid $gray-300;
+    }
+    tr:nth-child(odd){
+      background-color: $gray-100;
+    }
+  }
+
+  &.table-hover{
+    tbody tr:hover{
+      background-color: $gray-200;
+      cursor: pointer;
+    }
+  }
+}

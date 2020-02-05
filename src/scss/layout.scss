@@ -10,6 +10,7 @@
 @import "components/hero";
 @import "components/navbar";
 @import "components/pagination";
+@import "components/tables";
 @import "components/timeline";
 
 @import "utilities/flex";
@@ -20,6 +21,7 @@
 
 @import "pages/books-search";
 @import "pages/landing";
+@import "pages/readers";
 
 *, *:before, *:after {
   box-sizing: border-box;

@@ -55,7 +55,7 @@ let readerFields = {
       return reader.gender == 'm' ? 'old_man.png' : 'old_woman.png';
     }
   },
-  phone: () => random(100000000, 999999999),
+  phone: () => random(100000000, 999999999).toString(),
   passport_number: () => {
     return random(1000, 9999) + ' ' + random(100000, 999999);
   },
