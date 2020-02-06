@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class AddBook extends React.Component {
+export default class BookNew extends React.Component {
   constructor(props){
     super(props);
     this.state = {

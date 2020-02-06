@@ -19,7 +19,7 @@ export default class Book extends React.Component {
   render(){
     let { book } = this.state;
     return  (
-      <div className="page-book-view">
+      <div className="page-book-view mb-5">
         <div className="hero"><img src="/public/images/heros/white-ballpoint-pen-on-book-pages-226612.jpg" /></div>
         <div className="container pt-5">
           

@@ -12,6 +12,7 @@
     background-color: $tertiary-color;
     tr{
       border-bottom: 1px solid rgba($primary-color, 0.3);
+      th { font-weight: 600; }
     }
   }
   tbody{

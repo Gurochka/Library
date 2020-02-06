@@ -7,8 +7,9 @@ import Landing from './landing/Landing.jsx';
 
 import Readers from './librarian/Readers.jsx';
 import BooksSearch from './librarian/BooksSearch.jsx';
-import AddBook from './librarian/AddBook.jsx';
+import BookNew from './librarian/BookNew.jsx';
 import Book from './librarian/Book.jsx';
+import OrderNew from './librarian/OrderNew.jsx';
 
 import { faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faCheckSquare as fasCheckSquare } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
@@ -34,9 +35,10 @@ function App() {
         <Switch>
           <Route exact path="/" component = { Landing } />
           <Route path="/readers" component = { Readers } />
-          <Route path="/books_search" component = { BooksSearch } />
-          <Route path="/add_book" component = { AddBook } />
+          <Route path="/books" component = { BooksSearch } />
+          <Route path="/book/new" component = { BookNew } />
           <Route path="/book/:book_id" component = { Book } />
+          <Route path="/order/new" component = { OrderNew } />
         </Switch>
       </div>
       <Footer />
