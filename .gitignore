@@ -1,5 +1,7 @@
 #generated data
 /server/readers.json
+/server/books.json
+
 # dependencies
 /node_modules
 /.pnp
