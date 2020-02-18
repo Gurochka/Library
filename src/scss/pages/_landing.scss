@@ -1,17 +1,5 @@
 .landing-page{
 
-  .landing-hero{
-    background: linear-gradient(to bottom, rgba($gray-900, 0.4), rgba($gray-800, 0.3)), url(/public/images/heros/novel-books-775998.jpg) center/cover no-repeat;
-    height: 400px;
-    font-size: 0.9em;
-
-    @media (min-width: 992px){
-        font-size: 1.2em;
-        height: 700px;
-        h1{ font-size: 2.5em; }
-    }
-  }
-
   .landing-header{
     position: relative;
     font-weight: 400;

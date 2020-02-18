@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Hero(){
   return (
-    <div className="landing-hero flex justify-content-center align-items-center flex-column text-w-500 px-3 text-light">
+    <div className="hero-with-text" style={{backgroundImage: 'url(/public/images/heros/novel-books-775998.jpg)'}}>
       <h1 className="mb-3 text-light text-w-500 text-center">A Discworld public library</h1>
       <h2 className="text-gray-400 text-center">Explore the magnificent world of fantasy</h2>
       

@@ -10,6 +10,7 @@ import BooksSearch from './librarian/BooksSearch.jsx';
 import BookNew from './librarian/BookNew.jsx';
 import Book from './librarian/Book.jsx';
 import OrderNew from './librarian/OrderNew.jsx';
+import NoMatch from './NoMatch.jsx';
 
 import { faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faCheckSquare as fasCheckSquare, faBarcode } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faSquare, faCheckSquare } from '@fortawesome/free-regular-svg-icons';
@@ -39,6 +40,7 @@ function App() {
           <Route path="/book/new" component = { BookNew } />
           <Route path="/book/:book_id" component = { Book } />
           <Route path="/order/new" component = { OrderNew } />
+          <Route path="*" component = { NoMatch } />
         </Switch>
       </div>
       <Footer />

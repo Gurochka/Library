@@ -10,3 +10,41 @@
     opacity: 0.5;    
   }
 }
+
+.hero-with-text{
+    @include flex-container($direction: column, $justify: center, $align-items: center);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    height: 400px;
+    padding: 0 1rem;
+    
+    color: $text-light;    
+    font-size: 0.9em;
+    font-weight: 500;
+
+    position: relative;
+    &:after{
+      position: absolute;
+      content: " ";
+      background: linear-gradient(to bottom, rgba($gray-900, 0.55), rgba($gray-800, 0.2));
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    *{
+      z-index: 10;
+    }
+
+    @media (min-width: 992px){
+        font-size: 1.2em;
+        height: 700px;
+        h1{ 
+          font-size: 2.5em;
+          line-height: 3rem; 
+        }
+    }  
+}
