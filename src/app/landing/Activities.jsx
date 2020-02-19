@@ -1,7 +1,6 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-function Activities(){
+export default function Activities(){
   return (
     <div className="bg-secondary pb-5 pt-3">
       <div className="container landing-activities">
@@ -48,5 +47,3 @@ function Activities(){
     </div>
     )
 }
-
-export default Activities

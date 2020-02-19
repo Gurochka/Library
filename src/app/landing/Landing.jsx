@@ -5,16 +5,14 @@ import NewArrivals from 'App/landing/NewArrivals.jsx';
 import PopularCategories from 'App/landing/PopularCategories.jsx';
 import Events from 'App/landing/Events.jsx';
 
-export default class Landing extends React.Component {
-  render(){
-    return  (
-      <div className="landing-page">
-        <Hero />
-        <PopularCategories />
-        <Activities />
-        <Events />
-        <NewArrivals />
-      </div>
-    );
-  }
+export default function Landing() {
+  return  (
+    <div className="landing-page">
+      <Hero />
+      <PopularCategories />
+      <Activities />
+      <Events />
+      <NewArrivals />
+    </div>
+  )
 }

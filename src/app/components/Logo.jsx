@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Logo = () => {
+export default function Logo(){
   return(
 <svg version="1.1" id="Capa_1"  x="0px" y="0px" className="logo"
    viewBox="0 0 512 512" style={{enableBackground: 'new 0 0 512 512'}} >
@@ -89,40 +89,6 @@ const Logo = () => {
       c4.2,0,7.604-3.405,7.604-7.604C455.389,206.151,451.985,202.746,447.785,202.746z"/>
   </g>
 </g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
 </svg>
-
-
   )
 }
-
-export default Logo;

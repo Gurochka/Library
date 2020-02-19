@@ -1,6 +1,6 @@
 import React from 'react';
 
-function NoMatch(){
+export default function NoMatch(){
   return (
     <div>
       <div className="hero-with-text" style = {{backgroundImage: 'url(/public/images/heros/selective-focus-photo-of-man-wearing-eyeglasses-3228931.jpg)'}}>
@@ -9,5 +9,3 @@ function NoMatch(){
     </div>
     )
 }
-
-export default NoMatch
