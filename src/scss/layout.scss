@@ -39,7 +39,21 @@ hr{
   margin: 2rem 0;
 }
 
-.list-ustyled{
+.list-unstyled{
   padding: 0;
   list-style: none;
+}
+
+.svgOnHover{
+  svg{
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+  &:hover svg{
+    opacity: 0.5;
+    &:hover{
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
 }

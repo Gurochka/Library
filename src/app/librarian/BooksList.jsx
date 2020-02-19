@@ -61,11 +61,15 @@ export default class BooksList extends React.Component {
   }
 
   render(){
+    let bookAttributes = {};
+    if (this.props.onAddBook) bookAttributes.onAddBook = (book) => {this.props.onAddBook(book) } ;
+    if (this.props.onFavorite) bookAttributes.onFavorite = (book) => this.props.onFavorite(book);
+
     return  (
       <div className="books my-3">
         <Pagination page={ this.booksPage } total={this.totalPages} onChange={this.paginate}/>
 
-        { this.state.books.map(book => <BookBriefDefinition book={book} key={book.id}/>)}
+        { this.state.books.map(book => <BookBriefDefinition key={book.id} book={book} {...bookAttributes} />)}
       </div>
     )
   }
