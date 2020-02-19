@@ -34,7 +34,7 @@ export default class BooksList extends React.Component {
       let headers = res.headers.get('Link');
       if (headers) headers = parseInt(headers.match(/_page=(\d)+/g).pop().replace('_page=', ''), 10);
       this.totalPages = headers || 0;
-      return res.json()      
+      return res.json()
     })
     .then((res,req) => {
       console.log('books:', res);
@@ -62,7 +62,7 @@ export default class BooksList extends React.Component {
 
   render(){
     return  (
-      <div className="books mb-5 mr-5">
+      <div className="books my-3">
         <Pagination page={ this.booksPage } total={this.totalPages} onChange={this.paginate}/>
 
         { this.state.books.map(book => <BookBriefDefinition book={book} key={book.id}/>)}

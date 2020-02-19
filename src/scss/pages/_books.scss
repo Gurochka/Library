@@ -1,0 +1,30 @@
+.book-container{
+  background-color: $gray-100;
+
+  .book-cover{
+    max-height: 250px;
+    flex: 1;
+
+    img{
+      object-fit: cover;
+      object-position: top;
+    }        
+  }
+
+  .book-info{
+    flex: 4;
+
+    h4{
+      font-weight: 500;
+      font-size: 1.3em;
+      margin: 0;
+    }
+    .bookmark{
+      padding: 1rem;
+      font-size: 1.2em;
+      height: auto;
+      width: auto;  
+    }
+  }
+  @include translate-on-hover(right);
+}
