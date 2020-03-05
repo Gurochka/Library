@@ -47,15 +47,18 @@ class Store {
       method: 'POST',
       headers: {'Content-Type': 'application/json'}, 
       body: JSON.stringify(order)
-    });
+    }).then(res => res.json())
   }
 
   @observable readers = [];
 
   @action getReaders(){
-    fetch('http://localhost:3000/Readers')
+    return fetch('http://localhost:3000/Readers')
     .then(res => res.json())
-    .then(res => this.readers = res)    
+    .then(res => {
+      this.readers = res
+      return res;
+    })    
   }
 }
 

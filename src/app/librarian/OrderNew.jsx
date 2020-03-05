@@ -10,9 +10,12 @@ import store from 'App/store'
 export default class OrderNew extends React.Component {
   @observable search = ''
   @observable selectedBooks = []
+  @observable selectedReader
 
-  onSearchHandler(event){
-    this.search = event.target.value
+  componentDidMount() {
+    store.getReaders().then(res => {
+      if (res.length) this.selectedReader = res[0].id 
+    })
   }
 
   addBook(book){
@@ -27,18 +30,41 @@ export default class OrderNew extends React.Component {
   }
 
   createOrder(){
-    // before creating order a client should be already defined!
+    if (this.selectedReader === undefined) return
+
+    let return_date = new Date();
+    return_date.setDate(return_date.getDate() + 14)
+    return_date = return_date.toISOString();
+
     store
-      .createOrder({ books: this.selectedBooks.map(b => b.id) })
+      .createOrder({ 
+        reader_id: this.selectedReader, 
+        books: this.selectedBooks.map(b => b.id),
+        return_data: return_date
+      })
       .then(res => {
         console.log('whats the result? ', res)
       })
   }
 
   render(){
+    const { readers } = store
     return  (
       <div className="page-order-new container my-5">
-        <h1>Create New Order</h1>
+        <h1>Order Details</h1>
+
+        <div className="flex align-items-center mb-4">
+          <b>Reader: </b>
+          <select className="form-control w-auto mb-0 ml-3" onChange={(e) => this.selectedReader = e.target.value }>
+          {
+            readers.map(reader => (
+              <option key={reader.id} value={reader.id}>{reader.given_name} {reader.surname}</option>
+              ))
+          }
+          </select>
+        </div>
+
+        <b className="mb-1">Books:</b>
         
         <div className="order-content">
           { this.selectedBooks.map(book => (
@@ -54,7 +80,7 @@ export default class OrderNew extends React.Component {
         <div className="flex">
           <input type="text" className="form-control flex-grow-1 mb-0 mr-5 py-3 w-auto" placeholder="Find Book by ISBN, Author or Title" 
             
-            onChange={(e) => this.onSearchHandler(e) }/>
+            onChange={(e) => this.search = e.target.value }/>
           <button className="btn btn-primary btn-xl px-5"><FontAwesomeIcon icon="barcode"/> Or Scan Barcode</button>
 
         </div>
