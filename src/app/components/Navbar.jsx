@@ -25,7 +25,7 @@ export default function Navbar() {
             <li className="nav-item">
               <a className="nav-link" href="#">Orders  <FontAwesomeIcon icon="angle-down"/></a>
               <div className="dropdown-menu">
-                <a href="">Orders List</a>
+                <NavLink activeClassName="active" to="/orders">Orders List</NavLink>
                 <NavLink activeClassName="active" to="/order/new">Create New Order</NavLink>
               </div>
             </li>

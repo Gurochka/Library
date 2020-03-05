@@ -9,6 +9,7 @@ import Readers from 'App/librarian/Readers.jsx';
 import BooksSearch from 'App/librarian/BooksSearch.jsx';
 import BookNew from 'App/librarian/BookNew.jsx';
 import Book from 'App/librarian/Book.jsx';
+import Orders from 'App/librarian/Orders.jsx';
 import OrderNew from 'App/librarian/OrderNew.jsx';
 import NoMatch from 'App/NoMatch.jsx';
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/books" component = { BooksSearch } />
           <Route path="/book/new" component = { BookNew } />
           <Route path="/book/:book_id" component = { Book } />
+          <Route path="/orders" component = { Orders } />
           <Route path="/order/new" component = { OrderNew } />
           <Route path="*" component = { NoMatch } />
         </Switch>

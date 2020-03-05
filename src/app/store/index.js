@@ -12,6 +12,8 @@ class Store {
     }).join('&');
   }
 
+// -------------- categories --------------
+
   @observable categories = []
 
   @action getCategories(){
@@ -23,6 +25,7 @@ class Store {
       })
   }
 
+// --------------------- books ------------------
   @action getBook(book_id){
     return fetch(`http://localhost:3000/Books/${book_id}`)
       .then(res => { return res.json()})
@@ -42,6 +45,19 @@ class Store {
       })
   }
 
+//----------------- orders ----------------------
+
+  @observable orders = [];
+  
+  @action getOrders(){
+    return fetch('http://localhost:3000/orders')
+      .then(res => res.json())
+      .then(res => {
+        this.orders = res;
+        return res
+      })
+  }
+
   @action createOrder(order){
     return fetch('http://localhost:3000/orders', { 
       method: 'POST',
@@ -49,6 +65,8 @@ class Store {
       body: JSON.stringify(order)
     }).then(res => res.json())
   }
+
+// -------------------- readers ------------------
 
   @observable readers = [];
 

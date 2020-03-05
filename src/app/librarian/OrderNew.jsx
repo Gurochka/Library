@@ -40,7 +40,7 @@ export default class OrderNew extends React.Component {
       .createOrder({ 
         reader_id: this.selectedReader, 
         books: this.selectedBooks.map(b => b.id),
-        return_data: return_date
+        until: return_date
       })
       .then(res => {
         console.log('whats the result? ', res)
