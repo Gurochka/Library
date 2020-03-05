@@ -18,8 +18,8 @@ class Orders extends React.Component {
     }
 
     return  (
-      <div className="container mt-5 readers-page">
-        <h1>Readers</h1>
+      <div className="container mt-5">
+        <h1>Orders</h1>
         <table className="table table-hover">
           <thead>
             <tr>

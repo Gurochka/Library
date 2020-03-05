@@ -1,6 +1,6 @@
 import React from 'react';
 import Checkbox from 'App/components/Checkbox.jsx';
-import BooksList from 'App/librarian/BooksList.jsx'
+import BooksList from 'App/components/BooksList.jsx'
 import { observer } from 'mobx-react'
 import { observable } from "mobx";
 import store from 'App/store'

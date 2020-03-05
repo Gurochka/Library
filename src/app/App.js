@@ -3,15 +3,16 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Landing from 'App/landing/Landing.jsx';
+import Landing from 'App/pages/Landing/Landing.jsx';
 
-import Readers from 'App/librarian/Readers.jsx';
-import BooksSearch from 'App/librarian/BooksSearch.jsx';
-import BookNew from 'App/librarian/BookNew.jsx';
-import Book from 'App/librarian/Book.jsx';
-import Orders from 'App/librarian/Orders.jsx';
-import OrderNew from 'App/librarian/OrderNew.jsx';
-import NoMatch from 'App/NoMatch.jsx';
+import Readers from 'App/pages/Readers.jsx';
+
+import BooksSearch from 'App/pages/BooksSearch.jsx';
+import BookNew from 'App/pages/BookNew.jsx';
+import Book from 'App/pages/Book.jsx';
+import Orders from 'App/pages/Orders.jsx';
+import OrderNew from 'App/pages/OrderNew.jsx';
+import NoMatch from 'App/pages/NoMatch.jsx';
 
 import { faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faCheckSquare as fasCheckSquare, faBarcode, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faSquare, faCheckSquare, faTrashAlt } from '@fortawesome/free-regular-svg-icons';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import BooksList from 'App/librarian/BooksList.jsx';
+import BooksList from 'App/components/BooksList.jsx';
 import BookThumbnail from 'App/components/BookThumbnail.jsx';
 import { observer } from 'mobx-react'
 import { observable } from "mobx";
