@@ -1,5 +1,13 @@
 {
-  "orders": [],
+  "orders": [
+    {
+      "books": [
+        10,
+        13
+      ],
+      "id": 1
+    }
+  ],
   "categories": [
     {
       "id": 1,

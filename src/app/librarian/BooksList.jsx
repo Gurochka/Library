@@ -1,27 +1,16 @@
 import React from 'react';
 import Pagination from 'App/components/Pagination.jsx';
 import BookBriefDefinition from 'App/components/BookBriefDefinition.jsx'
+import { observer } from 'mobx-react'
+import { observable } from "mobx";
+import store from 'App/store'
 
-export default class BooksList extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      books: []
-    }
-
-    this.paginate = this.paginate.bind(this)    
-  }
-
+@observer
+class BooksList extends React.Component {
+  @observable books = []
+  
   booksPage = 1
   totalPages = 0
-
-  serialize(obj){
-    return Object.keys(obj).map(key => {
-      if (Array.isArray(obj[key])) return obj[key].map(val => `${key}=${val}`).join('&')
-        else return `${key}=${obj[key]}`;
-    }).join('&');
-  }
 
   fetchBooks(){
     let filters = Object.assign({}, this.props.filters || {}, {
@@ -29,17 +18,11 @@ export default class BooksList extends React.Component {
       _limit: 10
     })
 
-    fetch(`http://localhost:3000/books?${this.serialize(filters)}`)
-    .then(res => {
-      let headers = res.headers.get('Link');
-      if (headers) headers = parseInt(headers.match(/_page=(\d)+/g).pop().replace('_page=', ''), 10);
-      this.totalPages = headers || 0;
-      return res.json()
-    })
-    .then((res,req) => {
-      console.log('books:', res);
-      this.setState({ books: res })
-    })
+    store.getBooksByFilter(filters)
+      .then(res => {
+        this.totalPages = res.total
+        this.books = res.books
+      })
   }
 
   paginate(pageNumber){
@@ -67,10 +50,12 @@ export default class BooksList extends React.Component {
 
     return  (
       <div className="books my-3">
-        <Pagination page={ this.booksPage } total={this.totalPages} onChange={this.paginate}/>
+        <Pagination page={ this.booksPage } total={this.totalPages} onChange={(number) => this.paginate(number)}/>
 
-        { this.state.books.map(book => <BookBriefDefinition key={book.id} book={book} {...bookAttributes} />)}
+        { this.books.map(book => <BookBriefDefinition key={book.id} book={book} {...bookAttributes} />)}
       </div>
     )
   }
 }
+
+export default BooksList

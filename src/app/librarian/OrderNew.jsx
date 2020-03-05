@@ -2,47 +2,37 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import BooksList from 'App/librarian/BooksList.jsx';
 import BookThumbnail from 'App/components/BookThumbnail.jsx';
+import { observer } from 'mobx-react'
+import { observable } from "mobx";
+import store from 'App/store'
 
+@observer
 export default class OrderNew extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      selectedBooks: [],
-      search: ''
-    }
-    this.onSearchHandler = this.onSearchHandler.bind(this);
-    this.addBook = this.addBook.bind(this);
-    this.removeBook = this.removeBook.bind(this);
-  }
+  @observable search = ''
+  @observable selectedBooks = []
 
   onSearchHandler(event){
-    this.setState({ search: event.target.value })
+    this.search = event.target.value
   }
 
   addBook(book){
-    let ifBookAlreadySelected = this.state.selectedBooks.find(b => b.id == book.id);
+    let ifBookAlreadySelected = this.selectedBooks.find(b => b.id == book.id);
     if (!ifBookAlreadySelected){
-      this.setState({ selectedBooks: this.state.selectedBooks.slice().concat([book]) })
+      this.selectedBooks.push(book)
     }
   }
 
   removeBook(book){
-    this.state.selectedBooks.splice(this.state.selectedBooks.findIndex(b => b.id == book.id), 1);
-    this.setState({ selectedBooks: this.state.selectedBooks.slice() });
+    this.selectedBooks.splice(this.selectedBooks.findIndex(b => b.id == book.id), 1);
   }
 
   createOrder(){
     // before creating order a client should be already defined!
-
-    fetch('http://localhost:3000/orders', { 
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'}, 
-      body: JSON.stringify({ books: this.state.selectedBooks.map(b => b.id) })
-    }).then(data => {
-      console.log('redirect to orders list');
-      // change books status to "occuped"
-    })
+    store
+      .createOrder({ books: this.selectedBooks.map(b => b.id) })
+      .then(res => {
+        console.log('whats the result? ', res)
+      })
   }
 
   render(){
@@ -51,11 +41,11 @@ export default class OrderNew extends React.Component {
         <h1>Create New Order</h1>
         
         <div className="order-content">
-          { this.state.selectedBooks.map(book => (
-              <BookThumbnail book={book} key={book.id} onRemove={ this.removeBook }/>
+          { this.selectedBooks.map(book => (
+              <BookThumbnail book={book} key={book.id} onRemove={ b => this.removeBook(b) }/>
           ))}
           {
-            this.state.selectedBooks.length ? <button className="btn btn-primary mt-3" onClick={() => this.createOrder()}>Create Order</button> : <span>There are no books in order</span>
+            this.selectedBooks.length ? <button className="btn btn-primary mt-3" onClick={() => this.createOrder()}>Create Order</button> : <span>There are no books in order</span>
           }
 
         </div>
@@ -63,14 +53,14 @@ export default class OrderNew extends React.Component {
 
         <div className="flex">
           <input type="text" className="form-control flex-grow-1 mb-0 mr-5 py-3 w-auto" placeholder="Find Book by ISBN, Author or Title" 
-            value={this.state.search} 
-            onChange={this.onSearchHandler}/>
+            
+            onChange={(e) => this.onSearchHandler(e) }/>
           <button className="btn btn-primary btn-xl px-5"><FontAwesomeIcon icon="barcode"/> Or Scan Barcode</button>
 
         </div>
 
         <div className="order-search">
-          <BooksList filters={ { q: this.state.search } } onAddBook={ this.addBook } />
+          <BooksList filters={ { q: this.search } } onAddBook={ b => this.addBook(b) } />
         </div>
 
       </div>

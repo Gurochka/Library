@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -26,7 +26,6 @@ library.add(faReact, faSass, faNpm, faFacebookF, faGithubAlt, faInstagram);
 
 import Navbar from 'App/components/Navbar.jsx'
 import Footer from 'App/components/Footer.jsx'
-
 
 function App() {
   return (

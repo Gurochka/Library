@@ -27,7 +27,7 @@
   .landing-image-block{
     @include flex-container($justify: space-between, $flow: row wrap);
     margin-top: 3rem;
-    & > div {
+    & > div, & > a {
         @include flex-container($direction: column, $justify: space-between);
 
         background: $gray-800 center/cover no-repeat;
@@ -81,7 +81,7 @@
   .landing-new-arrivals{
     .landing-image-block {
         justify-content: space-around;
-        & > div {
+        & > div, & > a {
             width: calc((100% - 6rem)/2);
             height: 220px;
 

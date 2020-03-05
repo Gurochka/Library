@@ -1,26 +1,19 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Checkbox from 'App/components/Checkbox.jsx';
-import Pagination from 'App/components/Pagination.jsx';
-import BookBriefDefinition from 'App/components/BookBriefDefinition.jsx'
 import BooksList from 'App/librarian/BooksList.jsx'
+import { observer } from 'mobx-react'
+import { observable } from "mobx";
+import store from 'App/store'
 
-export default class BooksSearch extends React.Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-      filters: {},
-      categories: []
-    }
-  }
-
+@observer
+class BooksSearch extends React.Component {
+  @observable filters = {}
+  @observable categories = []
+  @observable search = ''
+  
   componentDidMount() {
-    fetch("http://localhost:3000/Categories")
-    .then(res => { return res.json()})
-    .then(res => {
-      res = res.map(category => { category.checked = true; return category })
-      this.setState({ categories: res })
+    store.getCategories().then(cat => {
+      this.categories = cat.slice().map(category => { category.checked = true; return category })
     })
   }
 
@@ -28,10 +21,10 @@ export default class BooksSearch extends React.Component {
     let filters = {}
     if (this.search) filters.q = this.search;
 
-    let checked_categories = this.state.categories.filter(cat => cat.checked).map(cat => cat.id);
-    filters.category_id = checked_categories.length == this.state.categories.length ? [] : checked_categories;
-    
-    this.setState({ filters: filters })
+    let checked_categories = this.categories.filter(cat => cat.checked).map(cat => cat.id);
+    filters.category_id = checked_categories.length == this.categories.length ? [] : checked_categories;
+
+    this.filters = filters;
   }
 
   onSearchHandler(event){
@@ -45,7 +38,6 @@ export default class BooksSearch extends React.Component {
   }
 
   render(){
-    const { categories } = this.state;
     return  (
       <div className="container pt-5 page-books-search">
         <h1>Books Search</h1>
@@ -55,7 +47,7 @@ export default class BooksSearch extends React.Component {
           <div className="flex-grow-1 mr-5">
             <input type="text" className="form-control form-control-xl " placeholder="Search book by author or title" onChange={(e) => this.onSearchHandler(e)}/>
             
-            <BooksList filters={ this.state.filters } loadOnStart/>
+            <BooksList filters={ this.filters } loadOnStart/>
           </div>
 
           <div className="filters">
@@ -70,7 +62,7 @@ export default class BooksSearch extends React.Component {
               <br />
               <h5 className="text-w-500">Categories</h5>
               <div>
-                {categories.map(category => (
+                {this.categories.map(category => (
                   <Checkbox label={category.title} key={category.id} onChange={() => this.onCategoriesClick(category) }/>
                   ))}
               </div>
@@ -83,3 +75,4 @@ export default class BooksSearch extends React.Component {
     )
   }
 }
+export default BooksSearch

@@ -1,8 +1,14 @@
 import '../scss/layout.scss';
 
-import React from 'react';
+import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
 import App from 'App/App';
 
+import store from 'App/store/index.js'
+const GlobalStore = createContext(store);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render((
+  <GlobalStore.Provider>
+    <App />
+  </GlobalStore.Provider>  
+), document.getElementById('root'));

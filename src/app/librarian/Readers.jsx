@@ -1,18 +1,15 @@
 import React from 'react';
+import { observer } from 'mobx-react'
+import store from 'App/store'
 
-export default class Readers extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = { readers: [] }
-  }
-
+@observer
+class Readers extends React.Component {
   componentDidMount(){
-    fetch('http://localhost:3000/Readers')
-    .then(res => res.json())
-    .then(res => this.setState({readers: res}))
+    store.getReaders()
   }
 
   render(){
+    const { readers } = store
     let transformPhone = (phone) => {
       return `+7(${phone.substr(0, 3)})${phone.substr(3, 3)}-${phone.substr(6, 2)}-${phone.substr(8, 2)}`
     }
@@ -29,7 +26,7 @@ export default class Readers extends React.Component {
             </tr>
           </thead>
           <tbody>  
-          { this.state.readers.map(reader => (
+          { readers.map(reader => (
             <tr key={reader.id}>
               <td><img src={`/public/images/users/${reader.photo}`} /></td>
               <td>{reader.given_name} {reader.surname}</td>
@@ -43,3 +40,4 @@ export default class Readers extends React.Component {
     )
   }
 }
+export default Readers

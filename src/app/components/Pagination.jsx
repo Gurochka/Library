@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default class Pagination extends React.Component {
   static defaultProps = {
     page: 1,
-    total: 0    
+    total: 0
   }
 
   getPagesArray(){
