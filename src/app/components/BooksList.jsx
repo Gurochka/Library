@@ -37,7 +37,8 @@ class BooksList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState,snapshot){
-    if (prevProps.filters != this.props.filters){
+    let isFiltersChanged = JSON.stringify(prevProps.filters) != JSON.stringify(this.props.filters);
+    if (isFiltersChanged){
       this.booksPage = 1;
       this.fetchBooks();
     }
