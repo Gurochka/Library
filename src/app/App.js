@@ -5,13 +5,18 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Landing from 'App/pages/Landing/Landing.jsx';
 
-import Readers from 'App/pages/Readers.jsx';
+import Readers from 'App/pages/readers/Readers.jsx';
+import ReaderNew from 'App/pages/readers/ReaderNew.jsx';
+import Reader from 'App/pages/readers/Reader.jsx';
 
-import BooksSearch from 'App/pages/BooksSearch.jsx';
-import BookNew from 'App/pages/BookNew.jsx';
-import Book from 'App/pages/Book.jsx';
-import Orders from 'App/pages/Orders.jsx';
-import OrderNew from 'App/pages/OrderNew.jsx';
+import Books from 'App/pages/books/Books.jsx';
+import BookNew from 'App/pages/books/BookNew.jsx';
+import Book from 'App/pages/books/Book.jsx';
+
+import Orders from 'App/pages/orders/Orders.jsx';
+import OrderNew from 'App/pages/orders/OrderNew.jsx';
+import Order from 'App/pages/orders/Order.jsx';
+
 import NoMatch from 'App/pages/NoMatch.jsx';
 
 import { faAngleDown, faEllipsisH, faPlaceOfWorship, faSignOutAlt, faCheckSquare as fasCheckSquare, faBarcode, faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -36,12 +41,19 @@ function App() {
       <div className="flex-grow-1">
         <Switch>
           <Route exact path="/" component = { Landing } />
-          <Route path="/readers" component = { Readers } />
-          <Route path="/books" component = { BooksSearch } />
+
+          <Route path="/books" component = { Books } />
           <Route path="/book/new" component = { BookNew } />
           <Route path="/book/:book_id" component = { Book } />
+
           <Route path="/orders" component = { Orders } />
           <Route path="/order/new" component = { OrderNew } />
+          <Route path="/order/:order_id" component = { Order } />
+
+          <Route path="/readers" component = { Readers } />
+          <Route path="/reader/new" component = { ReaderNew } />
+          <Route path="/reader/:reader_id" component = { Reader } />
+
           <Route path="*" component = { NoMatch } />
         </Switch>
       </div>

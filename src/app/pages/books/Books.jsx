@@ -6,7 +6,7 @@ import { observable } from "mobx";
 import store from 'App/store'
 
 @observer
-class BooksSearch extends React.Component {
+class Books extends React.Component {
   @observable filters = {}
   @observable categories = []
   @observable search = ''
@@ -75,4 +75,4 @@ class BooksSearch extends React.Component {
     )
   }
 }
-export default BooksSearch
+export default Books

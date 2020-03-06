@@ -14,6 +14,7 @@ export default function Navbar() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink className="nav-link" activeClassName="active" to="/readers">Readers</NavLink>
+              <NavLink className="nav-link" activeClassName="active" to="/readers/new">Add Reader</NavLink>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Books  <FontAwesomeIcon icon="angle-down"/></a>
