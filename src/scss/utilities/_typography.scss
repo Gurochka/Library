@@ -81,7 +81,7 @@ a{
 // Background colors
 @each $color-name, $color in $theme-colors {
   .bg-#{$color-name}{
-    background-color: $color;
+    background-color: $color !important;
   }
 }
 
@@ -128,7 +128,12 @@ a{
       text-decoration: none;
   }
 
-  &.tag-primary{
-    background-color: $primary-color;
+  @each $color-name, $color in $theme-colors{
+    &.tag-#{$color-name}{
+      background-color: $color;
+    }
+  }
+  &.tag-slim{
+    padding: 0.4rem 1rem;
   }
 }

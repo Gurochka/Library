@@ -25,6 +25,11 @@
       height: auto;
       width: auto;  
     }
+    .book-tags{
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
   }
   @include translate-on-hover(right);
 }

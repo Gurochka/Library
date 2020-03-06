@@ -86,7 +86,7 @@ export default class OrderNew extends React.Component {
         </div>
 
         <div className="order-search">
-          <BooksList filters={ { q: this.search } } onAddBook={ b => this.addBook(b) } />
+          <BooksList filters={ { q: this.search, available: true } } onAddBook={ b => this.addBook(b) } />
         </div>
 
       </div>

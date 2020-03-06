@@ -3,8 +3,11 @@ const server = jsonServer.create()
 const router = jsonServer.router('server/db.json')
 const middlewares = jsonServer.defaults()
 const db = require('./db.json')
+var bodyParser = require('body-parser')
 
 server.use(middlewares)
+server.use(bodyParser.json())
+
 server.get('/orders', (req, res) => {
   let orders = db.orders.slice(),
     readers = db.readers,
@@ -21,6 +24,39 @@ server.get('/orders', (req, res) => {
 
   res.jsonp(orders)
 })
+
+server.post('/orders', (req, res) => {
+  let db = router.db,
+    data = req.body;
+
+  if (!data.books || !Array.isArray(data.books)) {
+    return res.status(400).send({ message: 'Order can\'t be empty. You should define books array.' })
+  }
+
+  let books = db.get('books');
+  let unavailableBooks = [];
+
+  data.books.forEach(book_id => {
+    book = books.find({ id: book_id }).value();
+    if (!book || !book.available){
+      unavailableBooks.push(book.title);
+    }
+  })
+
+  if (unavailableBooks.length){
+    return res.status(400).send({ message: `Order contains not available books: ${unavailableBooks.join(', ')}` })
+  }
+
+  let order = db.get('orders').insert(req.body).write();
+
+  data.books.forEach(book_id => {
+    books.find({ id: book_id }).assign({ available: false, order_id: order.id }).write()
+  })
+
+  res.jsonp(order);
+})
+
+
 server.use(router)
 
 server.listen(3000, () => {
