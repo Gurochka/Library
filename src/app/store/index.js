@@ -32,7 +32,12 @@ class Store {
   }
 
   @action getBooksByFilter(filters){
-    let totalPages; 
+    filters = Object.assign({}, filters)
+
+    if (filters.category_id && filters.category_id.length == 0) delete filters.category_id;
+    if (filters.search != undefined && !filters.search) delete filters.search; 
+    
+    let totalPages;
     return fetch(`http://localhost:3000/books?${this.serialize(filters)}`)
       .then(res => {
         let headers = res.headers.get('Link');

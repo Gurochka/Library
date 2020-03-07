@@ -1,7 +1,9 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { observable } from "mobx";
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { observable } from "mobx"
+import { observer } from 'mobx-react'
 
+@observer
 export default class Checkbox extends React.Component {
   @observable value = true
 

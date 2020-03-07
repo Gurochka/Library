@@ -1,35 +1,20 @@
 import React from 'react'
 import CategoriesFilter from 'App/components/filters/CategoriesFilter.jsx'
-import Checkbox from 'App/components/Checkbox.jsx'
+import AvailabilityFilter from 'App/components/filters/AvailabilityFilter.jsx'
+
 import BooksList from 'App/components/BooksList.jsx'
 import { observer } from 'mobx-react'
-import { observable } from "mobx"
+import { toJS, observable } from "mobx"
 import store from 'App/store'
 
 @observer
 class Books extends React.Component {
   @observable filters = {}
-  @observable categories = []
-  @observable search = ''
   
-  updateFilters(){
-    let filters = {
-      category_id: this.categories
-    }
-    if (this.search) filters.q = this.search;
-
-    this.filters = filters;
+  updateFilters(new_filters){
+    this.filters = Object.assign({}, toJS(this.filters), new_filters)
   }
 
-  onSearchHandler(event){
-    this.search = event.target.value;
-    this.updateFilters();
-  }
-
-  onCategoriesChange(categories){
-    this.categories = categories
-    this.updateFilters();
-  }
 
   render(){
     return  (
@@ -39,7 +24,7 @@ class Books extends React.Component {
         <div className="flex">
           
           <div className="flex-grow-1 mr-5">
-            <input type="text" className="form-control form-control-xl " placeholder="Search book by author or title" onChange={(e) => this.onSearchHandler(e)}/>
+            <input type="text" className="form-control form-control-xl " placeholder="Search book by author or title" onChange={(e) => this.updateFilters({ q: e.target.value })}/>
             
             <BooksList filters={ this.filters } loadOnStart/>
           </div>
@@ -47,13 +32,11 @@ class Books extends React.Component {
           <div className="filters">
             <h2>Filters</h2>            
             <div>
-              <h5 className="text-w-500"> Status </h5>
-                <Checkbox label="Occuped" />
-                <Checkbox label="On restoration" />
-                <Checkbox label="Free" />
+              <h5 className="text-w-500"> Book Status </h5>
+                <AvailabilityFilter onChange={filter => this.updateFilters({ available: filter})}/>
               <br />
               <h5 className="text-w-500">Categories</h5>
-                <CategoriesFilter onChange={cats => this.onCategoriesChange(cats) }/>
+                <CategoriesFilter onChange={cats => this.updateFilters({ category_id: cats }) }/>
             </div>
 
           </div>
