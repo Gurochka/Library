@@ -49,9 +49,8 @@ server.post('/orders', (req, res) => {
 
   data.books.forEach(book_id => {
     let book = books.find({ id: book_id }).value();
-    if (!book || !book.available){
-      unavailableBooks.push(book.title);
-    }
+    if (!book) unavailableBooks.push('undefined book')
+    if (book && !book.available) unavailableBooks.push(book.title)
   })
 
   if (unavailableBooks.length){
