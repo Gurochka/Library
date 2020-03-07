@@ -1,6 +1,5 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Landing from 'App/pages/Landing/Landing.jsx';

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import { observer } from 'mobx-react'
 import store from 'App/store'
-import { observable } from "mobx";
+import { observable } from "mobx"
 
 @observer
 class Book extends React.Component {

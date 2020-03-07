@@ -1,6 +1,5 @@
-import React from 'react';
+import React from 'react'
 import { observer } from 'mobx-react'
-import store from 'App/store'
 
 @observer
 class Reader extends React.Component {

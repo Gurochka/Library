@@ -17,6 +17,8 @@ class Orders extends React.Component {
       return date.toDateString()
     }
 
+    let noPropagation = e => e.stopPropagation()
+
     return  (
       <div className="container mt-5">
         <h1>Orders</h1>
@@ -31,12 +33,12 @@ class Orders extends React.Component {
           </thead>
           <tbody>
           { orders.map(order => (
-            <tr key={order.id}>
+            <tr key={order.id} title="Go to Order Details" onClick={ (e) => this.props.history.push(`/order/${order.id}`) }>
               <td>{order.id}</td>
               <td>{order.reader.given_name} {order.reader.surname}</td>
               <td>{order.books.map(book => (
                   <div key={book.id}>
-                    <Link to={`/book/${book.id}`}>{book.title}</Link>
+                    <Link to={`/book/${book.id}`} onClick={noPropagation}>{book.title}</Link>
                   </div>
                 ))}</td>
               <td>{transformDate(order.until)}</td>

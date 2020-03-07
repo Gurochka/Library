@@ -8,21 +8,32 @@ var bodyParser = require('body-parser')
 server.use(middlewares)
 server.use(bodyParser.json())
 
-server.get('/orders', (req, res) => {
-  let orders = db.orders.slice(),
-    readers = db.readers,
-    books = db.books
+extendOrder = (order) => {
+  let readers = db.readers,
+      books = db.books
 
-  orders.forEach(order => {
-    if (order.reader) return
-    order.reader = readers.find(r => r.id == order.reader_id) || {}
-    order.books = order.books.map(book_id => {
-
-      return books.find(b => b.id == book_id) || {}
-    })
+  if (order.reader) return
+  order.reader = readers.find(r => r.id == order.reader_id) || {}
+  order.books = order.books.map(book_id => {
+    return books.find(b => b.id == book_id) || {}
   })
+}
 
+server.get('/orders', (req, res) => {
+  db.orders.slice().forEach(extendOrder)
   res.jsonp(orders)
+})
+
+server.get('/orders/:id', (req, res) => {
+  let order = db.orders.filter(order => order.id == req.params.id)
+  if (order && order.length) order = order[0]
+
+  if (order) {
+    extendOrder(order)
+    res.jsonp(order)
+  } else {
+    res.status(400).send({ message: 'Could\'t find order with provided id' })
+  }
 })
 
 server.post('/orders', (req, res) => {
@@ -37,7 +48,7 @@ server.post('/orders', (req, res) => {
   let unavailableBooks = [];
 
   data.books.forEach(book_id => {
-    book = books.find({ id: book_id }).value();
+    let book = books.find({ id: book_id }).value();
     if (!book || !book.available){
       unavailableBooks.push(book.title);
     }

@@ -1,4 +1,4 @@
-import { action, observable, computed } from 'mobx';
+import { action, observable } from 'mobx';
 
 class Store {
   constructor(){
@@ -56,6 +56,11 @@ class Store {
         this.orders = res;
         return res
       })
+  }
+
+  @action getOrder(id){
+    return fetch(`http://localhost:3000/orders/${id}`)
+    .then(res => res.json())
   }
 
   @action createOrder(order){
