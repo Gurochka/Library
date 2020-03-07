@@ -1,8 +1,9 @@
-import React from 'react';
-import Checkbox from 'App/components/Checkbox.jsx';
+import React from 'react'
+import CategoriesFilter from 'App/components/filters/CategoriesFilter.jsx'
+import Checkbox from 'App/components/Checkbox.jsx'
 import BooksList from 'App/components/BooksList.jsx'
 import { observer } from 'mobx-react'
-import { observable } from "mobx";
+import { observable } from "mobx"
 import store from 'App/store'
 
 @observer
@@ -11,18 +12,11 @@ class Books extends React.Component {
   @observable categories = []
   @observable search = ''
   
-  componentDidMount() {
-    store.getCategories().then(cat => {
-      this.categories = cat.slice().map(category => { category.checked = true; return category })
-    })
-  }
-
   updateFilters(){
-    let filters = {}
+    let filters = {
+      category_id: this.categories
+    }
     if (this.search) filters.q = this.search;
-
-    let checked_categories = this.categories.filter(cat => cat.checked).map(cat => cat.id);
-    filters.category_id = checked_categories.length == this.categories.length ? [] : checked_categories;
 
     this.filters = filters;
   }
@@ -32,8 +26,8 @@ class Books extends React.Component {
     this.updateFilters();
   }
 
-  onCategoriesClick(category){
-    category.checked = !category.checked;
+  onCategoriesChange(categories){
+    this.categories = categories
     this.updateFilters();
   }
 
@@ -53,20 +47,13 @@ class Books extends React.Component {
           <div className="filters">
             <h2>Filters</h2>            
             <div>
-{/*              <div><input type="checkbox" /> <label> Include Occuped </label> </div>
-              <div><input type="checkbox" /> <label> Include those I've read </label> </div>*/}
               <h5 className="text-w-500"> Status </h5>
                 <Checkbox label="Occuped" />
                 <Checkbox label="On restoration" />
                 <Checkbox label="Free" />
               <br />
               <h5 className="text-w-500">Categories</h5>
-              <div>
-                {this.categories.map(category => (
-                  <Checkbox label={category.title} key={category.id} onChange={() => this.onCategoriesClick(category) }/>
-                  ))}
-              </div>
-              <h5></h5>
+                <CategoriesFilter onChange={cats => this.onCategoriesChange(cats) }/>
             </div>
 
           </div>
