@@ -7,9 +7,13 @@ import { observer } from 'mobx-react'
 export default class Checkbox extends React.Component {
   @observable value = true
 
+  componentDidUpdate(){
+    if (this.value !== this.props.value) this.value = this.props.value
+  }
+
   handleCheckboxClick(event){
     this.value = !this.value
-    if (this.props.onChange) this.props.onChange()
+    if (this.props.onChange) this.props.onChange(this.value)
   }
 
   render(props){

@@ -2,7 +2,7 @@ import React from 'react'
 import Pagination from 'App/components/Pagination.jsx'
 import BookBriefDefinition from 'App/components/BookBriefDefinition.jsx'
 import { observer } from 'mobx-react'
-import { observable } from "mobx"
+import { toJS, observable } from "mobx"
 import store from 'App/store'
 
 @observer

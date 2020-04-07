@@ -5,16 +5,17 @@ import AvailabilityFilter from 'App/components/filters/AvailabilityFilter.jsx'
 import BooksList from 'App/components/BooksList.jsx'
 import { observer } from 'mobx-react'
 import { toJS, observable } from "mobx"
-import store from 'App/store'
 
 @observer
 class Books extends React.Component {
-  @observable filters = {}
+  @observable filters = {
+    available: [false],
+    category_id: []
+  }
   
   updateFilters(new_filters){
     this.filters = Object.assign({}, toJS(this.filters), new_filters)
   }
-
 
   render(){
     return  (
@@ -33,7 +34,7 @@ class Books extends React.Component {
             <h2>Filters</h2>            
             <div>
               <h5 className="text-w-500"> Book Status </h5>
-                <AvailabilityFilter onChange={filter => this.updateFilters({ available: filter})}/>
+                <AvailabilityFilter value={ toJS(this.filters.available) } onChange={filter => this.updateFilters({ available: filter})}/>
               <br />
               <h5 className="text-w-500">Categories</h5>
                 <CategoriesFilter onChange={cats => this.updateFilters({ category_id: cats }) }/>

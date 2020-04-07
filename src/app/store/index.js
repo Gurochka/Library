@@ -50,6 +50,15 @@ class Store {
       })
   }
 
+  transformAvailabilityFilter(available, occuped){
+    let filter;
+    if (available && occuped) filter = [true, false]
+    if (available && !occuped) filter = [true]
+    if (!available && occuped) filter = [false]
+    if (!available && !occuped) filter = [true, false]
+    return filter
+  }
+
 //----------------- orders ----------------------
 
   @observable orders = [];
